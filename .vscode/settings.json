@@ -1,0 +1,9 @@
+{
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-*": {
+      "shadowDom": true,
+      "style": "scss",
+      "externalTemplate": true
+    }
+  }
+}
