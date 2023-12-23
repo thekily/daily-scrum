@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, inject } 
 import { Commit } from '../../../../models/commit';
 import { CommitType } from '../../../../interfaces/CommitType';
 import { Database, ref, set } from '@angular/fire/database';
+import { SaveCommitService } from '../../../../services/save-commit';
 
 @Component({
   selector: 'app-register-commit-form',
@@ -19,15 +20,16 @@ export class RegisterCommitFormComponent {
   @Input() public commit: Commit | null = null
   private database: Database = inject(Database);
 
+  constructor(
+    private saveCommitService: SaveCommitService,
+  ) {}
 
   async ngOnInit() {
     console.log('RegisterCommitFormComponent.ngOnInit()')
     console.log(this.commit)
-    await set(ref(this.database, 'commits/' + this.commit?.uuid), {
-      type: this.commit?.type,
-      jiraIssues: this.commit?.jiraIssues,
-    });
-  
+    if (this.commit) {
+      await this.saveCommitService.saveCommit(this.commit);
+    }
   }
   
 }

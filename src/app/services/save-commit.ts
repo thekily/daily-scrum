@@ -1,17 +1,15 @@
 import { Inject, inject } from "@angular/core";
-import { Database } from "@angular/fire/database";
+import { Database, ref, set } from "@angular/fire/database";
 import { Commit } from "../models/commit";
 
 @Inject({
   providedIn: 'root'
 })
 export class SaveCommitService {
-  constructor(private db: AngularFireDatabase) {}
-
   
   private database: Database = inject(Database);
 
-  saveCommit(commit: Commit) {
-    this.database.app.
+  async saveCommit(commit: Commit) {
+    await set(ref(this.database, 'commits/' + commit.uuid), commit);
   }
 }
