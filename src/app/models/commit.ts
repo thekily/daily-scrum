@@ -7,7 +7,14 @@ export class Commit {
     public jiraIssues: string[],
   ) {
     console.log(this.type, this.jiraIssues)
-    this.uuid = '497599e7-c37e-4911-95aa-2b9abf3e3c90'
+    this.uuid = this.generateUUID()
+  }
+  generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  
   }
 
 }
