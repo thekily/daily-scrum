@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, inject } from '@angular/core';
 import { Commit } from '../../../../models/commit';
 import { CommitType } from '../../../../interfaces/CommitType';
+import { Database, ref, set } from '@angular/fire/database';
 
 @Component({
   selector: 'app-register-commit-form',
@@ -16,10 +17,17 @@ import { CommitType } from '../../../../interfaces/CommitType';
 })
 export class RegisterCommitFormComponent {
   @Input() public commit: Commit | null = null
+  private database: Database = inject(Database);
 
-  ngOnInit() {
+
+  async ngOnInit() {
     console.log('RegisterCommitFormComponent.ngOnInit()')
     console.log(this.commit)
+    await set(ref(this.database, 'commits/' + this.commit?.uuid), {
+      type: this.commit?.type,
+      jiraIssues: this.commit?.jiraIssues,
+    });
+  
   }
   
 }

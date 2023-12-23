@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "daily-scrum",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

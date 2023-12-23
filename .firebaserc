@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "daily-scrum-ff6bd": {
+      "hosting": {
+        "daily-scrum": [
+          "daily-scrum-ff6bd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "daily-scrum-ff6bd"
+  }
+}
