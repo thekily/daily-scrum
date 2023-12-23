@@ -6,7 +6,6 @@ export class Commit {
     public type: CommitType,
     public jiraIssues: string[],
   ) {
-    console.log(this.type, this.jiraIssues)
     this.uuid = this.generateUUID()
   }
   generateUUID(): string {

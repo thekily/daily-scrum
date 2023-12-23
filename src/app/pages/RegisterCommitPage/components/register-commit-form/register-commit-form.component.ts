@@ -25,8 +25,6 @@ export class RegisterCommitFormComponent {
   ) {}
 
   async ngOnInit() {
-    console.log('RegisterCommitFormComponent.ngOnInit()')
-    console.log(this.commit)
     if (this.commit) {
       await this.saveCommitService.saveCommit(this.commit);
     }
