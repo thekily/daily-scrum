@@ -1,9 +1,10 @@
-<div>
-  -----
-  <div>
+<div class="commit-card">
+  <div class="commit-type">
     {{commit?.type}}
   </div>
-  <div>
-    {{commit?.jiraIssues}}
+  <div class="commit-issues">
+    <ul>
+      <li *ngFor="let issue of commit?.jiraIssues">{{issue}}</li>
+    </ul>
   </div>
 </div>
